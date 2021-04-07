@@ -8,6 +8,7 @@ import com.cursoandroid.listatarefas.R;
 import com.cursoandroid.listatarefas.adapter.TarefaAdapter;
 import com.cursoandroid.listatarefas.helper.DbHelper;
 import com.cursoandroid.listatarefas.helper.RecyclerItemClickListener;
+import com.cursoandroid.listatarefas.helper.TarefaDao;
 import com.cursoandroid.listatarefas.model.Tarefa;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -78,17 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void carregarListaTarefas(){
         //Listar Tarefas
+        TarefaDao tarefaDao = new TarefaDao(getApplicationContext());
+        List<Tarefa> listaTarefa = tarefaDao.listar();
 
         //Configurar um adapter
-        Tarefa tarefa1 = new Tarefa();
-        tarefa1.setNomeTarefa("Ir ao mercado");
-        listaTarefa.add(tarefa1);
-
-        Tarefa tarefa2 = new Tarefa();
-        tarefa2.setNomeTarefa("Ir a feira");
-        listaTarefa.add(tarefa2);
-
-
         tarefaAdapter = new TarefaAdapter(listaTarefa);
         //Configurar recycleview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

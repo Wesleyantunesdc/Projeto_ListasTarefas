@@ -3,6 +3,7 @@ package com.cursoandroid.listatarefas.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,7 +39,8 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
                     TarefaDao tarefaDao = new TarefaDao(getApplicationContext());
                     Tarefa t = new Tarefa();
                     t.setNomeTarefa(editTarefa.getText().toString());
-                    tarefaDao.salvar(new Tarefa());
+                    tarefaDao.salvar(t);
+                    finish();
                 }else{
                     Toast.makeText(getApplicationContext(),"O campo do nome da tarefa é obrigatorio!",Toast.LENGTH_LONG).show();
                 }
