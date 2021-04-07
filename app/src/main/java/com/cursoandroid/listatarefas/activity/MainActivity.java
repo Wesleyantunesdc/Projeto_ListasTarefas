@@ -1,10 +1,12 @@
 package com.cursoandroid.listatarefas.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.cursoandroid.listatarefas.R;
 import com.cursoandroid.listatarefas.adapter.TarefaAdapter;
+import com.cursoandroid.listatarefas.helper.DbHelper;
 import com.cursoandroid.listatarefas.helper.RecyclerItemClickListener;
 import com.cursoandroid.listatarefas.model.Tarefa;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         carregarListaTarefas();
     }
+
+
 
     public void carregarListaTarefas(){
         //Listar Tarefas

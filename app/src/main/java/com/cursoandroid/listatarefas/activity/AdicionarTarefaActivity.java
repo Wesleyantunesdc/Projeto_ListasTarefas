@@ -6,15 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.cursoandroid.listatarefas.R;
+import com.cursoandroid.listatarefas.helper.TarefaDao;
+import com.cursoandroid.listatarefas.model.Tarefa;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class AdicionarTarefaActivity extends AppCompatActivity {
+    private TextInputEditText editTarefa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_tarefa);
+        editTarefa = findViewById(R.id.textTarefa);
     }
 
     @Override
@@ -27,6 +33,16 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.itemSalvar:
+                //Salvar
+                if(!editTarefa.getText().toString().isEmpty()){
+                    TarefaDao tarefaDao = new TarefaDao(getApplicationContext());
+                    Tarefa t = new Tarefa();
+                    t.setNomeTarefa(editTarefa.getText().toString());
+                    tarefaDao.salvar(new Tarefa());
+                }else{
+                    Toast.makeText(getApplicationContext(),"O campo do nome da tarefa é obrigatorio!",Toast.LENGTH_LONG).show();
+                }
+
                 break;
         }
 
